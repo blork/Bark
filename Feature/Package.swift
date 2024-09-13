@@ -7,20 +7,25 @@ let package = Package(
     platforms: [.iOS(.v17), .macOS(.v14)],
     products: [
         .library(
-            name: "Feature",
-            targets: ["Feature"]
-        ),
+            name: "DogBrowser",
+            targets: ["DogBrowser"]
+        )
     ],
     dependencies: [
         .package(path: "../Core")
     ],
     targets: [
         .target(
-            name: "Feature"
+            name: "DogBrowser",
+            dependencies: [
+                .product(name: "DogAPI", package: "Core")
+            ]
         ),
         .testTarget(
-            name: "FeatureTests",
-            dependencies: ["Feature"]
-        ),
+            name: "DogBrowserTests",
+            dependencies: [
+                "DogBrowser"
+            ]
+        )
     ]
 )
