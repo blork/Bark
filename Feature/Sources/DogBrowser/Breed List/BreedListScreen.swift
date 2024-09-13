@@ -1,4 +1,5 @@
 import Base
+import DogDesign
 import SwiftUI
 
 public struct BreedListScreen: View {
@@ -11,13 +12,22 @@ public struct BreedListScreen: View {
     
     public var body: some View {
         @Bindable var viewModel = viewModel
-        List {
-            if viewModel.isSearching && viewModel.filteredBreeds?.isEmpty == true {
+        
+        Group {
+            if viewModel.isSearching && viewModel.filteredBreeds.isEmpty {
                 ContentUnavailableView.search
             } else {
-                ForEach(viewModel.filteredBreeds ?? placeholders) { breed in
-                    NavigationLink(value: Routes.breed(breed)) {
-                        BreedRow(breed: breed)
+                ResourceStateView(resource: viewModel.breeds) { _ in
+                    List(viewModel.filteredBreeds) { breed in
+                        NavigationLink(value: Routes.breed(breed)) {
+                            BreedRow(breed: breed)
+                        }
+                    }
+                } placeholder: {
+                    List(0 ..< 20) {
+                        NavigationLink(value: $0) {
+                            BreedRow.Placeholder()
+                        }
                     }
                 }
             }
@@ -29,15 +39,17 @@ public struct BreedListScreen: View {
         }
         .navigationTitle("Breeds")
     }
-    
-    private var placeholders: [Breed] {
-        (0 ..< 20).map { .preview($0) }
-    }
 }
 
 #Preview("Loaded") {
     NavigationStack {
-        BreedListScreen(viewModel: .Preview(.loaded([.preview()])))
+        BreedListScreen(
+            viewModel: .Preview(
+                .loaded(
+                    (0..<10).map(Breed.preview(_:))
+                )
+            )
+        )
     }
 }
 
@@ -50,5 +62,11 @@ public struct BreedListScreen: View {
 #Preview("Error") {
     NavigationStack {
         BreedListScreen(viewModel: .Preview(.error(PreviewError.whoops)))
+    }
+}
+
+#Preview("Search") {
+    NavigationStack {
+        BreedListScreen(viewModel: .Preview(.loaded([]), isSearching: true))
     }
 }

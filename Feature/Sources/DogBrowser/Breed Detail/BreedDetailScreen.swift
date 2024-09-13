@@ -1,4 +1,5 @@
 import Base
+import DogDesign
 import SwiftUI
 
 public struct BreedDetailScreen: View {
@@ -10,9 +11,27 @@ public struct BreedDetailScreen: View {
     }
     
     public var body: some View {
-        List {
-            ForEach(viewModel.breedImages.value ?? [viewModel.breed.image], id: \.self) { url in
-                BreedImageView(url: url)
+        let columns = [
+            GridItem(.adaptive(minimum: 80), spacing: .spacing(.small))
+        ]
+        
+        ResourceStateView(resource: viewModel.breedImages) { images in
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: .spacing(.small)) {
+                    ForEach(images, id: \.self) { url in
+                        BreedImageView(url: url)
+                    }
+                }
+                .padding()
+            }
+        } placeholder: {
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: .spacing(.small)) {
+                    ForEach(0 ..< 30) { _ in
+                        BreedImageView.Placeholder()
+                    }
+                }
+                .padding()
             }
         }
         .oneTimeTask {
@@ -21,7 +40,7 @@ public struct BreedDetailScreen: View {
         .navigationTitle(viewModel.breed.name.capitalized)
         .listStyle(.plain)
         #if os(iOS)
-        .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.inline)
         #endif
     }
 }
@@ -31,11 +50,11 @@ public struct BreedDetailScreen: View {
         BreedDetailScreen(
             viewModel: .Preview(
                 breed: .preview(),
-                breedImages: .loaded([
-                    Breed.preview().image,
-                    Breed.preview().image,
-                    Breed.preview().image,
-                ])
+                breedImages: .loaded(
+                    (0 ..< 30).map {
+                        Breed.preview($0).image
+                    }
+                )
             )
         )
     }

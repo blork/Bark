@@ -18,7 +18,8 @@ let package = Package(
         .target(
             name: "DogBrowser",
             dependencies: [
-                .product(name: "DogAPI", package: "Core")
+                .product(name: "DogAPI", package: "Core"),
+                .product(name: "DogDesign", package: "Core"),
             ]
         ),
         .testTarget(

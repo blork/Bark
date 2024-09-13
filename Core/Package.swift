@@ -10,6 +10,10 @@ let package = Package(
             name: "DogAPI",
             targets: ["DogAPI"]
         ),
+        .library(
+            name: "DogDesign",
+            targets: ["DogDesign"]
+        ),
     ],
     dependencies: [
         .package(path: "../Base"),
@@ -24,6 +28,12 @@ let package = Package(
         .testTarget(
             name: "DogAPITests",
             dependencies: ["DogAPI"]
-        )
+        ),
+        .target(
+            name: "DogDesign",
+            dependencies: [
+                .product(name: "Base", package: "Base"),
+            ]
+        ),
     ]
 )

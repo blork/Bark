@@ -1,29 +1,44 @@
+import DogDesign
 import SwiftUI
 
 struct BreedImageView: View {
+    
     let url: URL
     
+    @ScaledMetric(relativeTo: .title) private var imageSize = 128
+
     var body: some View {
-        ZStack(alignment: .center) {
-            AsyncImage(
-                url: url
-            ) { phase in
-                switch phase {
-                case let .success(image):
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                default:
-                    ProgressView()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                }
+        Color.clear.overlay(
+            DogDesign.AsyncImage(url: url) { image in
+                image
+                    .resizable()
+                    .scaledToFill()
+            } placeholder: {
+                ProgressView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .aspectRatio(1, contentMode: .fill)
+            .clipped()
+        )
+        .frame(maxWidth: .infinity)
+        .aspectRatio(1, contentMode: .fit)
+        .clipShape(.rect(cornerRadius: .cornerRadius(.regular)))
+    }
+    
+    struct Placeholder: View {
+        var body: some View {
+            Color(.tertiarySystemFill)
+                .frame(maxWidth: .infinity)
+                .aspectRatio(1, contentMode: .fit)
+                .clipShape(.rect(cornerRadius: .cornerRadius(.regular)))
         }
-        .frame(maxWidth: .infinity, alignment: .center)
     }
 }
 
-#Preview {
+#Preview("With Image") {
     BreedImageView(url: Breed.preview().image)
+}
+
+#Preview("Placeholder") {
+    BreedImageView.Placeholder()
 }

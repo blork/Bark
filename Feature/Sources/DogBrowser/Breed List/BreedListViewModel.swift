@@ -18,11 +18,11 @@ import Foundation
         }
     }
     
-    var filteredBreeds: [Breed]? {
+    var filteredBreeds: [Breed] {
         if search.isEmpty {
-            baseBreeds
+            baseBreeds ?? []
         } else {
-            baseBreeds?.filter { $0.name.localizedCaseInsensitiveContains(search) }
+            baseBreeds?.filter { $0.name.localizedCaseInsensitiveContains(search) } ?? []
         }
     }
 
@@ -49,9 +49,10 @@ import Foundation
 
 extension BreedListViewModel {
     class Preview: BreedListViewModel {
-        init(_ state: ResourceState<[Breed]>) {
+        init(_ state: ResourceState<[Breed]>, isSearching: Bool = false) {
             super.init(breedRepository: StubBreedRepository())
             breeds = state
+            self.isSearching = isSearching
         }
 
         override func load() async {}
