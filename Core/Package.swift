@@ -7,8 +7,8 @@ let package = Package(
     platforms: [.iOS(.v17), .macOS(.v14)],
     products: [
         .library(
-            name: "Core",
-            targets: ["Core"]
+            name: "DogAPI",
+            targets: ["DogAPI"]
         ),
     ],
     dependencies: [
@@ -16,11 +16,14 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "Core"
+            name: "DogAPI",
+            dependencies: [
+                .product(name: "Base", package: "Base"),
+            ]
         ),
         .testTarget(
-            name: "CoreTests",
-            dependencies: ["Core"]
-        ),
+            name: "DogAPITests",
+            dependencies: ["DogAPI"]
+        )
     ]
 )
