@@ -20,6 +20,9 @@
 		CB451DBB2C947E7000D45999 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB451DBD2C947E7000D45999 /* Bark.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bark.entitlements; sourceTree = "<group>"; };
 		CB451DBF2C947E7000D45999 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CB451DC62C947F5C00D45999 /* Base */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Base; sourceTree = "<group>"; };
+		CB451DC72C947F9000D45999 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
+		CB451DC82C947FB400D45999 /* Feature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Feature; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +39,9 @@
 		CB451DAB2C947E6F00D45999 = {
 			isa = PBXGroup;
 			children = (
+				CB451DC62C947F5C00D45999 /* Base */,
+				CB451DC72C947F9000D45999 /* Core */,
+				CB451DC82C947FB400D45999 /* Feature */,
 				CB451DB62C947E6F00D45999 /* Bark */,
 				CB451DB52C947E6F00D45999 /* Products */,
 			);
