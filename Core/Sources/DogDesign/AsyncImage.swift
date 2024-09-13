@@ -1,5 +1,21 @@
 import SwiftUI
 
+#if os(iOS)
+    public typealias PlatformImage = UIImage
+#elseif os(macOS)
+    public typealias PlatformImage = NSImage
+#endif
+
+extension Image {
+    init(platformImage: PlatformImage) {
+        #if os(iOS)
+            self.init(uiImage: platformImage)
+        #elseif os(macOS)
+            self.init(nsImage: platformImage)
+        #endif
+    }
+}
+
 /// https://github.com/pointfreeco/swift-snapshot-testing/issues/701#issuecomment-1440979736
 public struct AsyncImage<Content>: View where Content: View {
     private var content: (ImageProvider) -> _ConditionalContent<SwiftUI.AsyncImage<Content>, Content>
@@ -13,7 +29,7 @@ public struct AsyncImage<Content>: View where Content: View {
         content = { imageProvider in
             if let uiImage = url.flatMap(imageProvider) {
                 return ViewBuilder.buildEither(
-                    second: Image(uiImage: uiImage)
+                    second: Image(platformImage: uiImage)
                 )
             } else {
                 return ViewBuilder.buildEither(
@@ -36,7 +52,7 @@ public struct AsyncImage<Content>: View where Content: View {
             if let uiImage = url.flatMap(imageProvider) {
                 return ViewBuilder.buildEither(
                     second: ViewBuilder.buildEither(
-                        first: content(Image(uiImage: uiImage))
+                        first: content(Image(platformImage: uiImage))
                     )
                 )
             } else {
@@ -61,7 +77,7 @@ public struct AsyncImage<Content>: View where Content: View {
         self.content = { imageProvider in
             if let uiImage = url.flatMap(imageProvider) {
                 return ViewBuilder.buildEither(
-                    second: content(.success(Image(uiImage: uiImage)))
+                    second: content(.success(Image(platformImage: uiImage)))
                 )
             } else {
                 return ViewBuilder.buildEither(
@@ -81,7 +97,7 @@ public struct AsyncImage<Content>: View where Content: View {
     }
 }
 
-public typealias ImageProvider = (URL) -> UIImage?
+public typealias ImageProvider = (URL) -> PlatformImage?
 
 private struct Key: EnvironmentKey {
     static var defaultValue: ImageProvider = { _ in nil }

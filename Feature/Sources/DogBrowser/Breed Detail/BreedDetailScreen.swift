@@ -12,7 +12,7 @@ public struct BreedDetailScreen: View {
     
     public var body: some View {
         let columns = [
-            GridItem(.adaptive(minimum: 80), spacing: .spacing(.small))
+            GridItem(.adaptive(minimum: 128), spacing: .spacing(.small))
         ]
         
         ResourceStateView(resource: viewModel.breedImages) { images in
