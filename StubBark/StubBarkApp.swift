@@ -4,13 +4,11 @@ import SwiftUI
 
 @main
 struct BarkApp: App {
-    let client: Client
     
     let breedRepository: BreedRepository
 
     init() {
-        client = DogAPIClient(session: URLSession.shared)
-        breedRepository = RemoteBreedRepository(client: client)
+        breedRepository = StubBreedRepository(breeds: (0..<30).map(Breed.preview(_:)))
     }
 
     var body: some Scene {
@@ -19,7 +17,7 @@ struct BarkApp: App {
                 DogBrowser.BreedListScreen(viewModel: .init(
                     breedRepository: breedRepository
                 ))
-                .navigationTitle("Breeds")
+                .navigationTitle("Stub App")
                 .navigationDestination(for: DogBrowser.Routes.self) { route in
                     switch route {
                     case let .breed(breed):

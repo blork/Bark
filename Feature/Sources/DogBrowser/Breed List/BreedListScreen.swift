@@ -37,7 +37,6 @@ public struct BreedListScreen: View {
         .oneTimeTask {
             await viewModel.load()
         }
-        .navigationTitle("Breeds")
     }
 }
 

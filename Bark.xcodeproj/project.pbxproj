@@ -11,6 +11,9 @@
 		CB451DBC2C947E7000D45999 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB451DBB2C947E7000D45999 /* Assets.xcassets */; };
 		CB451DC02C947E7000D45999 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB451DBF2C947E7000D45999 /* Preview Assets.xcassets */; };
 		CB451DCB2C94997F00D45999 /* DogBrowser in Frameworks */ = {isa = PBXBuildFile; productRef = CB451DCA2C94997F00D45999 /* DogBrowser */; };
+		CB451DD32C94D36B00D45999 /* StubBarkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB451DD22C94D36B00D45999 /* StubBarkApp.swift */; };
+		CB451DD72C94D36C00D45999 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB451DD62C94D36C00D45999 /* Assets.xcassets */; };
+		CB451DDF2C94D3DF00D45999 /* DogBrowser in Frameworks */ = {isa = PBXBuildFile; productRef = CB451DDE2C94D3DF00D45999 /* DogBrowser */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		CB451DC62C947F5C00D45999 /* Base */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Base; sourceTree = "<group>"; };
 		CB451DC72C947F9000D45999 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
 		CB451DC82C947FB400D45999 /* Feature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Feature; sourceTree = "<group>"; };
+		CB451DD02C94D36B00D45999 /* StubBark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StubBark.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB451DD22C94D36B00D45999 /* StubBarkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubBarkApp.swift; sourceTree = "<group>"; };
+		CB451DD62C94D36C00D45999 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +36,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB451DCB2C94997F00D45999 /* DogBrowser in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB451DCD2C94D36B00D45999 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB451DDF2C94D3DF00D45999 /* DogBrowser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +57,7 @@
 				CB451DC72C947F9000D45999 /* Core */,
 				CB451DC82C947FB400D45999 /* Feature */,
 				CB451DB62C947E6F00D45999 /* Bark */,
+				CB451DD12C94D36B00D45999 /* StubBark */,
 				CB451DB52C947E6F00D45999 /* Products */,
 				CB451DC92C94997F00D45999 /* Frameworks */,
 			);
@@ -52,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				CB451DB42C947E6F00D45999 /* Bark.app */,
+				CB451DD02C94D36B00D45999 /* StubBark.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,6 +98,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CB451DD12C94D36B00D45999 /* StubBark */ = {
+			isa = PBXGroup;
+			children = (
+				CB451DD22C94D36B00D45999 /* StubBarkApp.swift */,
+				CB451DD62C94D36C00D45999 /* Assets.xcassets */,
+			);
+			path = StubBark;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -105,6 +130,26 @@
 			productReference = CB451DB42C947E6F00D45999 /* Bark.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CB451DCF2C94D36B00D45999 /* StubBark */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB451DDB2C94D36C00D45999 /* Build configuration list for PBXNativeTarget "StubBark" */;
+			buildPhases = (
+				CB451DCC2C94D36B00D45999 /* Sources */,
+				CB451DCD2C94D36B00D45999 /* Frameworks */,
+				CB451DCE2C94D36B00D45999 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StubBark;
+			packageProductDependencies = (
+				CB451DDE2C94D3DF00D45999 /* DogBrowser */,
+			);
+			productName = StubBark;
+			productReference = CB451DD02C94D36B00D45999 /* StubBark.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -116,6 +161,9 @@
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					CB451DB32C947E6F00D45999 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					CB451DCF2C94D36B00D45999 = {
 						CreatedOnToolsVersion = 15.4;
 					};
 				};
@@ -134,6 +182,7 @@
 			projectRoot = "";
 			targets = (
 				CB451DB32C947E6F00D45999 /* Bark */,
+				CB451DCF2C94D36B00D45999 /* StubBark */,
 			);
 		};
 /* End PBXProject section */
@@ -148,6 +197,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CB451DCE2C94D36B00D45999 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB451DD72C94D36C00D45999 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -156,6 +213,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB451DB82C947E6F00D45999 /* BarkApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB451DCC2C94D36B00D45999 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB451DD32C94D36B00D45999 /* StubBarkApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +413,67 @@
 			};
 			name = Release;
 		};
+		CB451DDC2C94D36C00D45999 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.blork.StubBark;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CB451DDD2C94D36C00D45999 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.blork.StubBark;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -369,10 +495,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		CB451DDB2C94D36C00D45999 /* Build configuration list for PBXNativeTarget "StubBark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB451DDC2C94D36C00D45999 /* Debug */,
+				CB451DDD2C94D36C00D45999 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		CB451DCA2C94997F00D45999 /* DogBrowser */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DogBrowser;
+		};
+		CB451DDE2C94D3DF00D45999 /* DogBrowser */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DogBrowser;
 		};
