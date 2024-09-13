@@ -8,15 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		CB451DB82C947E6F00D45999 /* BarkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB451DB72C947E6F00D45999 /* BarkApp.swift */; };
-		CB451DBA2C947E6F00D45999 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB451DB92C947E6F00D45999 /* ContentView.swift */; };
 		CB451DBC2C947E7000D45999 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB451DBB2C947E7000D45999 /* Assets.xcassets */; };
 		CB451DC02C947E7000D45999 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB451DBF2C947E7000D45999 /* Preview Assets.xcassets */; };
+		CB451DCB2C94997F00D45999 /* DogBrowser in Frameworks */ = {isa = PBXBuildFile; productRef = CB451DCA2C94997F00D45999 /* DogBrowser */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CB451DB42C947E6F00D45999 /* Bark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB451DB72C947E6F00D45999 /* BarkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarkApp.swift; sourceTree = "<group>"; };
-		CB451DB92C947E6F00D45999 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CB451DBB2C947E7000D45999 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB451DBD2C947E7000D45999 /* Bark.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bark.entitlements; sourceTree = "<group>"; };
 		CB451DBF2C947E7000D45999 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -30,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB451DCB2C94997F00D45999 /* DogBrowser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +44,7 @@
 				CB451DC82C947FB400D45999 /* Feature */,
 				CB451DB62C947E6F00D45999 /* Bark */,
 				CB451DB52C947E6F00D45999 /* Products */,
+				CB451DC92C94997F00D45999 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,7 +60,6 @@
 			isa = PBXGroup;
 			children = (
 				CB451DB72C947E6F00D45999 /* BarkApp.swift */,
-				CB451DB92C947E6F00D45999 /* ContentView.swift */,
 				CB451DBB2C947E7000D45999 /* Assets.xcassets */,
 				CB451DBD2C947E7000D45999 /* Bark.entitlements */,
 				CB451DBE2C947E7000D45999 /* Preview Content */,
@@ -73,6 +73,13 @@
 				CB451DBF2C947E7000D45999 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CB451DC92C94997F00D45999 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -91,6 +98,9 @@
 			dependencies = (
 			);
 			name = Bark;
+			packageProductDependencies = (
+				CB451DCA2C94997F00D45999 /* DogBrowser */,
+			);
 			productName = Bark;
 			productReference = CB451DB42C947E6F00D45999 /* Bark.app */;
 			productType = "com.apple.product-type.application";
@@ -145,7 +155,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB451DBA2C947E6F00D45999 /* ContentView.swift in Sources */,
 				CB451DB82C947E6F00D45999 /* BarkApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,6 +370,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CB451DCA2C94997F00D45999 /* DogBrowser */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DogBrowser;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CB451DAC2C947E6F00D45999 /* Project object */;
 }

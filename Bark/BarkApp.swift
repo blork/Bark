@@ -1,17 +1,31 @@
-//
-//  BarkApp.swift
-//  Bark
-//
-//  Created by Sam Oakley on 13/09/2024.
-//
-
+import DogAPI
+import DogBrowser
 import SwiftUI
 
 @main
 struct BarkApp: App {
+    let client: Client
+    
+    let breedRepository: BreedRepository
+
+    init() {
+        client = DogAPIClient(session: URLSession.shared)
+        breedRepository = RemoteBreedRepository(client: client)
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                DogBrowser.BreedListScreen(viewModel: .init(
+                    breedRepository: breedRepository
+                ))
+                .navigationDestination(for: DogBrowser.Routes.self) { route in
+                    switch route {
+                    case let .breed(breed):
+                        DogBrowser.BreedDetailScreen(viewModel: .init(breedRepository: breedRepository, breed: breed))
+                    }
+                }
+            }
         }
     }
 }
