@@ -4,9 +4,8 @@ import Foundation
 
 @Observable public class BreedListViewModel {
     
-    let breedRepository: BreedRepository
-        
     var breeds: ResourceState<[Breed]> = .loading
+    var getBreeds: () async throws -> [Breed]
     
     private var baseBreeds: [Breed]? {
         if let breedsToShow {
@@ -31,14 +30,14 @@ import Foundation
     
     let breedsToShow: [String]?
     
-    public init(breedRepository: BreedRepository, breedsToShow: [String]? = nil) {
-        self.breedRepository = breedRepository
+    public init(getBreeds: @escaping () async throws -> [Breed], breedsToShow: [String]? = nil) {
+        self.getBreeds = getBreeds
         self.breedsToShow = breedsToShow
     }
     
     func load() async {
         do {
-            breeds = try await .loaded(breedRepository.breeds())
+            breeds = try await .loaded(getBreeds())
         } catch ClientError.cancellation {
             // Do nothing
         } catch {
@@ -50,7 +49,7 @@ import Foundation
 extension BreedListViewModel {
     class Preview: BreedListViewModel {
         init(_ state: ResourceState<[Breed]>, isSearching: Bool = false) {
-            super.init(breedRepository: StubBreedRepository())
+            super.init(getBreeds: { [] })
             breeds = state
             self.isSearching = isSearching
         }

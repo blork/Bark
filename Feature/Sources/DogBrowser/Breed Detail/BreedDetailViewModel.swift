@@ -4,20 +4,20 @@ import Foundation
 
 @Observable public class BreedDetailViewModel {
     
-    let breedRepository: BreedRepository
-        
+    var getImages: (_ breedName: String) async throws -> [URL]
+    
     var breedImages: ResourceState<[URL]> = .loading
     
     let breed: Breed
 
-    public init(breedRepository: BreedRepository, breed: Breed) {
-        self.breedRepository = breedRepository
+    public init(getImages: @escaping (String) async throws -> [URL], breed: Breed) {
+        self.getImages = getImages
         self.breed = breed
     }
     
     func load() async {
         do {
-            breedImages = try await .loaded(breedRepository.images(for: breed.name))
+            breedImages = try await .loaded(getImages(breed.name))
         } catch {
             breedImages = .error(error)
         }
@@ -27,7 +27,7 @@ import Foundation
 extension BreedDetailViewModel {
     class Preview: BreedDetailViewModel {
         init(breed: Breed, breedImages: ResourceState<[URL]>) {
-            super.init(breedRepository: StubBreedRepository(), breed: breed)
+            super.init(getImages: { _ in [] }, breed: breed)
             self.breedImages = breedImages
         }
 

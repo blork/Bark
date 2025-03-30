@@ -42,12 +42,12 @@ public struct BreedListScreen: View {
 
 #Preview("Loaded") {
     NavigationStack {
+        // Can just make a real ViewModel here and give it fake data
+        // However for the other previews wer still want to force a state.
         BreedListScreen(
-            viewModel: .Preview(
-                .loaded(
-                    (0..<10).map(Breed.preview(_:))
-                )
-            )
+            viewModel: .init(getBreeds: {
+                (0 ..< 10).map(Breed.preview(_:))
+            })
         )
     }
 }

@@ -17,13 +17,18 @@ struct BarkApp: App {
         WindowGroup {
             NavigationStack {
                 DogBrowser.BreedListScreen(viewModel: .init(
-                    breedRepository: breedRepository
+                    getBreeds: breedRepository.breeds
                 ))
                 .navigationTitle("Breeds")
                 .navigationDestination(for: DogBrowser.Routes.self) { route in
                     switch route {
                     case let .breed(breed):
-                        DogBrowser.BreedDetailScreen(viewModel: .init(breedRepository: breedRepository, breed: breed))
+                        DogBrowser.BreedDetailScreen(
+                            viewModel: .init(
+                                getImages: breedRepository.images(for:),
+                                breed: breed
+                            )
+                        )
                     }
                 }
             }
